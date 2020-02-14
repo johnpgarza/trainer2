@@ -1,0 +1,11 @@
+*.pyc
+*~
+*.sqlite3
+/static
+.DS_Store
+dist/
+venv/
+*.log
+__pycache__/
+.idea/
+local_settings.py
