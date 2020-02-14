@@ -64,4 +64,4 @@ class diary(models.Model):
     )
 
     def __str__(self):
-        return self.day.strftime("%m/%d/%Y"), self.client.name
+        return self.client.name
