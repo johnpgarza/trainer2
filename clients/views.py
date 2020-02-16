@@ -81,6 +81,7 @@ class DiaryCreateView(LoginRequiredMixin, CreateView):
     model = Diary
     fields = ('trainer', 'client', 'day', 'exercises', 'duration', 'duration_units', 'reps', 'weight', 'weight_units')
     template_name = 'diary_new.html'
+    success_url = reverse_lazy('diary_new')
     login_url = 'login'
 
     def form_valid(self, form):
