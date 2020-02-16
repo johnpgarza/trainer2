@@ -1,7 +1,6 @@
 *.pyc
 *~
 *.sqlite3
-/trainer/static
 .DS_Store
 dist/
 venv/
