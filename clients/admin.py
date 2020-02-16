@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Client, exerciseCategory, exercises, diary
+from .models import Client, ExerciseCategory, Exercises, Diary, Comment
 from django.http import HttpResponse
 import csv
 import datetime
@@ -36,21 +36,27 @@ class ClientAdmin(admin.ModelAdmin):
     actions = [export_to_csv]
 
 
-class ExerciseCategory(admin.ModelAdmin):
-    model = exerciseCategory
+class ExerciseCategoryAdmin(admin.ModelAdmin):
+    model = ExerciseCategory
 
 
-class Exercises(admin.ModelAdmin):
-    model = exercises
+class ExercisesAdmin(admin.ModelAdmin):
+    model = Exercises
     actions = [export_to_csv]
 
 
-class Diary(admin.ModelAdmin):
-    model = diary
+class DiaryAdmin(admin.ModelAdmin):
+    model = Diary
+    actions = [export_to_csv]
+
+
+class CommentAdmin(admin.ModelAdmin):
+    model = Comment
     actions = [export_to_csv]
 
 
 admin.site.register(Client, ClientAdmin)
-admin.site.register(exerciseCategory, ExerciseCategory)
-admin.site.register(exercises, Exercises)
-admin.site.register(diary, Diary)
+admin.site.register(ExerciseCategory, ExerciseCategoryAdmin)
+admin.site.register(Exercises, ExercisesAdmin)
+admin.site.register(Diary, DiaryAdmin)
+admin.site.register(Comment, CommentAdmin)

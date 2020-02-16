@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="client-entry">
+  <h2>{{ object.name }}</h2>
+    <p>Trainer assigned: {{ object.author }}</p>
+    <p>Joined: {{ object.date }}</p>
+    <p>Address: {{ object.address }}</p>
+    <p>City: {{ object.city }}</p>
+    <p>State: {{ object.state }}</p>
+    <p>Zip: {{ object.zipcode }}</p>
+    <p>Cell: {{ object.cell_phone }}</p>
+  </div>
+
+  <p><a href="{% url 'client_edit' client.pk %}">Edit</a> | <a href="{% url 'client_delete' client.pk %}">Delete</a></p>
+  <p>Back to <a href="{% url 'client_list' %}">All Clients</a>.</p>
+{% endblock content %}

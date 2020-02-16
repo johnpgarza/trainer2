@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+{% load bootstrap4 %}
+{% block content %}
+    <h1>New Workout</h1>
+    <div>
+    <img src="{% static "/images/track.jpg" %}" width="220" alt="coach"/>
+    </div>
+    </br>
+    <form action="" method="post">{% csrf_token %}
+       {% bootstrap_form form %}
+        </br>
+      <button class="btn btn-success ml-2" type="submit">Save</button>
+    </form>
+{% endblock content %}

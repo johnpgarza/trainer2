@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+{% block title %}Comments{% endblock title %}
+
+{% block content %}
+    <h1>Comments List</h1>
+    <p> This will only display entries with you listed as the trainer.</p>
+    <div style="float:right">
+    <img src="{% static "/images/read.jpg" %}" width="220" alt="coach"/>
+    </div>
+  {% for Comment in object_list %}
+      <table>
+      <tr>
+          <td><span class="font-weight-bold">{{ Comment.day}}</span></td>
+          <td><span class="font-weight-bold">{{ Comment.client}}</span></td>
+      </tr>
+      </table>
+      <p>{{ Comment.comment }}</p>
+    <br />
+  {% endfor %}
+{% endblock content %}

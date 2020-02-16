@@ -12,9 +12,8 @@ class Client(models.Model):
     email = models.EmailField("E-mail", max_length=100, default=' ')
     cell_phone = models.CharField("Cell", max_length=50, default='(402)000-0000')
     acct_number = models.CharField("Account Number", max_length=50, blank=True, null=True, default='00000')
-    notes = models.TextField("Notes")
     date = models.DateTimeField("Date", auto_now_add=True)
-    author = models.ForeignKey(
+    trainer = models.ForeignKey(
         get_user_model(),
         on_delete=models.CASCADE,
     )
@@ -26,7 +25,7 @@ class Client(models.Model):
         return reverse('client_detail', args=[str(self.id)])
 
 
-class exerciseCategory(models.Model):
+class ExerciseCategory(models.Model):
     category = models.CharField(max_length=26, unique=True, default='cardio')
 
     def __str__(self):
@@ -36,21 +35,26 @@ class exerciseCategory(models.Model):
         return reverse('client_detail', args=[str(self.id)])
 
 
-class exercises(models.Model):
+class Exercises(models.Model):
     name = models.CharField(max_length=26, unique=True, default='running')
     exercise_category_category = models.ForeignKey(
-        exerciseCategory, on_delete=models.CASCADE
+        ExerciseCategory, on_delete=models.CASCADE
     )
 
     def __str__(self):
         return self.name
 
     def get_absolute_url(self):
-        return reverse('client_detail', args=[str(self.id)])
+        return reverse('exercise_detail', args=[str(self.id)])
 
 
-class diary(models.Model):
-    day = models.DateTimeField()
+class Diary(models.Model):
+    trainer = models.ForeignKey(
+        get_user_model(),
+        on_delete=models.CASCADE,
+        null=True,
+    )
+    day = models.DateField()
     duration = models.IntegerField(default='10')
     duration_units = models.CharField(max_length=5, default='min')
     reps = models.IntegerField(default='10')
@@ -60,8 +64,31 @@ class diary(models.Model):
         Client, on_delete=models.CASCADE
     )
     exercises = models.ForeignKey(
-        exercises, on_delete=models.CASCADE
+        Exercises, on_delete=models.CASCADE
     )
 
     def __str__(self):
         return self.client.name
+
+    def get_absolute_url(self):
+        return reverse('diary_detail', args=[str(self.id)])
+
+
+class Comment(models.Model):
+    client = models.ForeignKey(
+        Client,
+        on_delete=models.CASCADE,
+        related_name='comments',
+    )
+    day = models.DateField()
+    comment = models.TextField(max_length=250)
+    trainer = models.ForeignKey(
+        get_user_model(),
+        on_delete=models.CASCADE,
+    )
+
+    def __str__(self):
+        return self.comment
+
+    def get_absolute_url(self):
+        return reverse('comment_detail', args=[str(self.id)])

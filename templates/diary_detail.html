@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="client-entry">
+  <h2>{{ object.client }}</h2>
+    <p>Day: {{ object.day }}</p>
+    <p>Workout: {{ object.exercises}}</p>
+    <p>Duration: {{ object.duration }} {{ object.duration_units }}</p>
+    <p>Reps: {{ object.reps }} at {{ object.weight }} {{ object.weight_units }}</p>
+</div>
+  <p><a href="{% url 'diary_edit' diary.pk %}">Edit</a> | <a href="{% url 'diary_delete' diary.pk %}">Delete</a></p>
+  <p>Back to <a href="{% url 'diary_list' %}">My Diary</a>.</p>
+{% endblock content %}

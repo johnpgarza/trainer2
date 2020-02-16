@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+{% load bootstrap4 %}
+{% block content %}
+    <div>
+    <img src="{% static "/images/notes.jpg" %}" width="220" alt="coach"/>
+    </div>
+    <h1>New Comment</h1>
+    </br>
+    <form action="" method="post">
+        {% csrf_token %}
+        {% bootstrap_form form %}
+        </br>
+      <button class="btn btn-success ml-2" type="submit">Save</button>
+    </form>
+{% endblock content %}
+

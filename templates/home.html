@@ -1,10 +1,98 @@
 {% extends 'base.html' %}
-
+{% load staticfiles %}
 {% block title %}Home{% endblock title %}
 
 {% block content %}
-<div class="jumbotron">
-  <h1 class="display-4">Personal Training Tracking System</h1>
-  <p class="lead">Team work makes the dream-work!.</p>
-</div>
+    <div class="jumbotron">
+        <h1 class="display-4">Personal Training Tracking System</h1>
+        <p class="lead">Team work makes the dream-work!.</p>
+    </div>
+
+    <div class="content container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="row">
+
+                    <div class="col-md-4">
+                        <div class="thumbnail">
+                            <img src="{% static "/images/track.jpg" %}" width="220" alt="coach"/>
+                            <div class="caption">
+                                <h2>Track</h2>
+                                <p>Log a workout.</p>
+                                <p><a class="btn btn-primary" href="{% url 'diary_new' %}" role="button">Diary</a></p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-4">
+                        <div class="thumbnail">
+                            <img src="{% static "/images/workout.jpg" %}" width="220" alt="coach"/>
+                            <div class="caption">
+                                <h2>My Training</h2>
+                                <p>Read my training diary.</p>
+                                <p><a class="btn btn-primary" href="{% url 'diary_list' %}" role="button">New Entry</a></p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-4">
+                        <div class="thumbnail">
+                            <img src="{% static "/images/team.jpg" %}" width="220" alt="coach"/>
+                            <div class="caption">
+                                <h2>My Team</h2>
+                                <p>See who is on your team.</p>
+                                <p><a class="btn btn-primary" href="{% url 'client_list' %}" role="button">View Clients</a></p>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="content container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="row">
+
+                    <div class="col-md-4">
+                        <div class="thumbnail">
+                            <img src="{% static "/images/clients.jpg" %}" width="220" alt="coach"/>
+                            <div class="caption">
+                                <h2>New Clients!</h2>
+                                <p>Welcome aboard.</p>
+                                <p><a class="btn btn-primary" href="{% url 'client_new' %}" role="button">New Client</a></p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-4">
+                        <div class="thumbnail">
+                            <img src="{% static "/images/notes.jpg" %}" width="220" alt="coach"/>
+                            <div class="caption">
+                                <h2>Client Notes</h2>
+                                <p>Keep it Going!</p>
+                                <p><a class="btn btn-primary" href="{% url 'new_comment' %}" role="button">Comments</a></a></p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-4">
+                        <div class="thumbnail">
+                            <img src="{% static "/images/read.jpg" %}" width="220" alt="coach"/>
+                            <div class="caption">
+                                <h2>Read Notes</h2>
+                                <p>How we doing?</p>
+                                <p><a class="btn btn-primary" href="{% url 'comment_list' %}" role="button">Read</a></p>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+
 {% endblock content %}
