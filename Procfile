@@ -1,1 +1,1 @@
-web: gunicorn trainer.wsgi --log-file -
+web:gunicorn trainer.wsgi --log-file -
