@@ -1,12 +1,10 @@
 {% extends 'base.html' %}
 {% load staticfiles %}
 {% block title %}Home{% endblock title %}
-
 {% block content %}
     <div class="jumbotron">
         <h1 class="display-4">Personal Training Tracking System</h1>
         <p class="lead">Team work makes the dream-work!.</p>
-
         <div class="content container">
             <div class="row">
                 <div class="col-md-12">
@@ -82,7 +80,7 @@
                                 <div class="caption">
                                     <h2>Read Notes</h2>
                                     <p>How we doing?</p>
-                                    <p><a class="btn btn-primary" href="{% url 'diary_list' %}" role="button">Read</a>
+                                    <p><a class="btn btn-primary" href="{% url 'comment_list' %}" role="button">Read</a>
                                     </p>
                                 </div>
                             </div>
