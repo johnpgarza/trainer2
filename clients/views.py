@@ -92,7 +92,7 @@ def diary_new(request):
             diary = form.save(commit=False)
             diary.created_date = timezone.now()
             diary.save()
-            return render(request, '../templates/diary_list.html', {'diary': diary})
+            return render(request, '../templates/diary_new.html', {'diary': diary})
 
     else:
         form = DiaryForm()
@@ -117,7 +117,7 @@ def comment_new(request):
             comment = form.save(commit=False)
             comment.created_date = timezone.now()
             comment.save()
-            return render(request, '../templates/comment_list.html', {'comment': comment})
+            return render(request, '../templates/client_new_comment.html', {'comment': comment})
 
     else:
         form = CommentForm()
