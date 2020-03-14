@@ -59,7 +59,7 @@ class DiaryListView(LoginRequiredMixin, ListView):
     template_name = 'diary_list.html'
 
     def get_queryset(self):
-        return Diary.objects.filter(trainer=self.request.user)
+        return Diary.objects.filter(trainer=self.request.user).order_by('-day')
 
     login_url = 'login'
 
@@ -130,6 +130,6 @@ class CommentListView(LoginRequiredMixin, ListView):
     template_name = 'comment_list.html'
 
     def get_queryset(self):
-        return Comment.objects.filter(trainer=self.request.user)
+        return Comment.objects.filter(trainer=self.request.user).order_by('-day')
 
     login_url = 'login'
