@@ -121,7 +121,7 @@ def comment_new(request):
 
     else:
         form = CommentForm()
-    return render(request, '../templates/comment_new.html', {'form': form})
+    return render(request, '../templates/client_new_comment.html', {'form': form})
 
 
 class CommentListView(LoginRequiredMixin, ListView):
