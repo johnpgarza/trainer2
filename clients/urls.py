@@ -5,7 +5,7 @@ from .views import (
     ClientUpdateView,
     ClientDetailView,
     ClientDeleteView,
-    #ClientCreateView,
+    # ClientCreateView,
     DiaryListView,
     DiaryDetailView,
     DiaryUpdateView,

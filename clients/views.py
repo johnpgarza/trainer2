@@ -1,3 +1,4 @@
+from django.contrib.auth.decorators import login_required
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.utils import timezone
 from django.views.generic.edit import UpdateView, DeleteView, CreateView
@@ -38,6 +39,7 @@ class ClientDeleteView(LoginRequiredMixin, DeleteView):
     login_url = 'login'
 
 
+@login_required(login_url='/trainers/login/')
 def client_new(request):
     if request.method == "POST":
         form = ClientForm(request.POST)
@@ -82,6 +84,7 @@ class DiaryDeleteView(LoginRequiredMixin, DeleteView):
     login_url = 'login'
 
 
+@login_required(login_url='/trainers/login/')
 def diary_new(request):
     if request.method == "POST":
         form = DiaryForm(request.POST)
