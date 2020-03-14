@@ -3,7 +3,7 @@ from django.contrib.auth.mixins import LoginRequiredMixin
 from django.utils import timezone
 from django.views.generic.edit import UpdateView, DeleteView, CreateView
 from django.views.generic import ListView, DetailView
-from django.shortcuts import render, get_object_or_404
+from django.shortcuts import render, get_object_or_404, redirect
 from .forms import *
 from .models import Client, Comment, Diary
 from django.urls import reverse_lazy
@@ -92,7 +92,8 @@ def diary_new(request):
             diary = form.save(commit=False)
             diary.created_date = timezone.now()
             diary.save()
-            return render(request, '../templates/diary_new.html', {'diary': diary})
+            # return render(request, '../templates/diary_list.html', {'diary': diary})
+            return redirect('/clients/diary_list')
 
     else:
         form = DiaryForm()
@@ -117,7 +118,7 @@ def comment_new(request):
             comment = form.save(commit=False)
             comment.created_date = timezone.now()
             comment.save()
-            return render(request, '../templates/client_new_comment.html', {'comment': comment})
+            return redirect('/clients/comment_list')
 
     else:
         form = CommentForm()
