@@ -1,5 +1,6 @@
 from django.contrib.auth import get_user_model
 from django.db import models
+from phonenumber_field.modelfields import PhoneNumberField
 from django.urls import reverse
 
 
@@ -10,7 +11,7 @@ class Client(models.Model):
     state = models.CharField("State", max_length=50, default='NE')
     zipcode = models.CharField("Zip Code", max_length=10, default='00000')
     email = models.EmailField("E-mail", max_length=100, default=' ')
-    cell_phone = models.CharField("Cell", max_length=50, default='(402)000-0000')
+    cell_phone = PhoneNumberField(null=False, blank=True,)
     acct_number = models.CharField("Account Number", max_length=50, blank=True, null=True, default='00000')
     date = models.DateTimeField("Date", auto_now_add=True)
     trainer = models.ForeignKey(
